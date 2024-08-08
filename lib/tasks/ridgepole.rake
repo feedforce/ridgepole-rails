@@ -20,8 +20,8 @@ Rake.application.lookup('db:schema:load').clear
 desc 'Apply Schemafile to the database'
 task 'db:schema:load' => 'ridgepole:apply'
 
-Rake.application.lookup('db:test:load').clear
-task 'db:test:load' => 'db:test:purge' do
+Rake.application.lookup('db:test:prepare').clear
+task 'db:test:prepare' => 'db:test:purge' do
   Rake::Task['ridgepole:apply'].invoke('test')
 end
 
